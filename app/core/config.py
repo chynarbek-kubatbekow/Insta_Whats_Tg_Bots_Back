@@ -40,7 +40,7 @@ class Settings(BaseSettings):
     groq_reasoning_effort: str | None = "low"
     groq_disable_ssl_verify: bool = False
 
-    meta_graph_api_version: str = "v23.0"
+    meta_graph_api_version: str = "v25.0"
     whatsapp_access_token: SecretStr | None = None
     whatsapp_phone_number_id: str | None = None
     whatsapp_verify_token: SecretStr | None = None

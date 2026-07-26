@@ -19,7 +19,7 @@ services:
       - key: DATABASE_URL
         sync: false
       - key: META_GRAPH_API_VERSION
-        value: v23.0
+        value: v25.0
       - key: WHATSAPP_ACCESS_TOKEN
         sync: false
       - key: WHATSAPP_PHONE_NUMBER_ID
