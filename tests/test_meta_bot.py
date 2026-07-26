@@ -7,7 +7,7 @@ import pytest
 
 from app.core.config import Settings
 from app.core.security import verify_meta_signature
-from app.services.ai_service import AIService
+from app.services.ai_service import STRICT_SYSTEM_PROMPT, AIService
 
 
 def test_postgres_url_is_normalized_for_asyncpg() -> None:
@@ -38,3 +38,9 @@ async def test_ai_without_key_returns_safe_fallback() -> None:
         "Пока не знаю.",
     )
     assert answer == "Пока не знаю."
+
+
+def test_ai_prompt_allows_general_beauty_questions_but_protects_salon_facts() -> None:
+    assert "общие вопросы по теме салона красоты" in STRICT_SYSTEM_PROMPT
+    assert "ТОЛЬКО фактами из БАЗЫ ЗНАНИЙ" in STRICT_SYSTEM_PROMPT
+    assert "Не ставь диагнозы" in STRICT_SYSTEM_PROMPT
