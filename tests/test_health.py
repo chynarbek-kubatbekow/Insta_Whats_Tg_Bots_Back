@@ -15,6 +15,14 @@ def test_health_check() -> None:
     assert response.json() == {"status": "ok"}
 
 
+def test_health_check_accepts_head() -> None:
+    client = TestClient(app)
+    response = client.head("/health")
+
+    assert response.status_code == 200
+    assert response.content == b""
+
+
 def test_openapi_contains_expected_routes() -> None:
     client = TestClient(app)
     response = client.get("/openapi.json")
